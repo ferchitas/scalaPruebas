@@ -7,7 +7,7 @@ import scala.annotation.tailrec
  * Una funcion es tail recursive si su ultima espresion es una llamada recursiva.
  * Esto es importante para evitar que en llamadas recursivas muy grandes acaben lanzando
  * una stackOverflowException.
- *  
+ *
  */
 object Recursion4 extends App {
 
@@ -54,4 +54,31 @@ object Recursion4 extends App {
   println(factorialTailRec(4))
 
   println(factorialTailRec(1000))
+
+  /**
+   *
+   * voy a poner las funciones de fibonacci y de primo como tail recursive.
+   * Nota: la que calcula si un numero es pimo ya lo es, pero al voy a refactorizar.
+   */
+
+  def fibonacci (n: Int): Int = {
+    def fibonacciAux (elemento: Int, ultimo: Int,  penultimo: Int): Int = {
+      if(elemento >= n) ultimo
+      else fibonacciAux(elemento + 1, ultimo + penultimo, ultimo)
+    }
+    if(n <= 2) 1
+    else fibonacciAux(2, 1, 1)
+  }
+
+  println(fibonacci(7))
+
+  def prime (n: Int): Boolean = {
+    val i = n - 1
+    def divide(n: Int, i: Int): Boolean =
+      if(i == 1) true
+      else if (n%i == 0) false
+      else divide(n, i - 1)
+    divide(n, i)
+  }
+  println(prime(2003))
 }
