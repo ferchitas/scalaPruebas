@@ -1,2 +1,7 @@
+#Scala
 *.class
 *.log
+
+IntelliJ
+.DS_Store
+.idea
