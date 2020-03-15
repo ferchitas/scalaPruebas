@@ -30,5 +30,5 @@ class Persona(nombre: String, val edad: Int) {
   def saludo(nombre: String): Unit = println(s"Soy ${this.nombre}, buenas $nombre")
   def saludo(): Unit = println(s"Soy ${this.nombre}")
 
-  def this(nombre: String) = this(nobre, 0)
+  def this(nombre: String) = this(nombre, 0)
 }

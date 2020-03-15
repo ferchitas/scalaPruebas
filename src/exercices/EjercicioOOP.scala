@@ -21,5 +21,13 @@ object EjercicioOOP {
 
     def sumar(cantidad: Int): Contador = new Contador(inicio + cantidad)
     def resta(cantidad: Int): Contador = new Contador(inicio - cantidad)
+
+    def sumaRecursiva(cantidad: Int): Contador =
+      if(cantidad <= 0) this
+      else sumarUno.sumaRecursiva(cantidad - 1)
+
+    def restaRecursiva(cantidad: Int): Contador =
+      if(cantidad <= 0) this
+      else restaUno.restaRecursiva(cantidad - 1)
   }
 }
