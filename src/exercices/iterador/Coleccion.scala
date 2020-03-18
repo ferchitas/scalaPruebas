@@ -1,6 +1,7 @@
 package exercices.iterador
 
-trait Coleccion {
+abstract class Coleccion[A] {
 
-
+  var array: Array[A]
+  def crearIterador: Iterador[A]
 }
