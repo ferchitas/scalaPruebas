@@ -26,7 +26,7 @@ trait Transformador[-A, B] {
   def transformar(elementoATransformar: A): B
 }
 
-object Vacio extends ListaRecursiva[Nothing] {
+case object Vacio extends ListaRecursiva[Nothing] {
 
   override def cabeza: Nothing = throw new NoSuchElementException
   override def cola: ListaRecursiva[Nothing] = throw new NoSuchElementException
@@ -39,7 +39,7 @@ object Vacio extends ListaRecursiva[Nothing] {
   override def ++[B >: Nothing](listaRecursiva: ListaRecursiva[B]): ListaRecursiva[B] = listaRecursiva
 }
 
-class Elemento [+A] (elemento: A, listaRecursiva: ListaRecursiva[A]) extends ListaRecursiva[A] {
+case class Elemento [+A] (elemento: A, listaRecursiva: ListaRecursiva[A]) extends ListaRecursiva[A] {
 
   override def cabeza: A = elemento
   override def cola: ListaRecursiva[A] = listaRecursiva
