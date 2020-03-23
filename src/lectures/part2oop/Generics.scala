@@ -48,28 +48,31 @@ object Generics extends App {
     class Lista[+A] {
       def insertar[B >: A](elemento: B): Lista[B] = ???
     }
+
     val listaEnteros = new Lista[Int]
 
-  /**
-   *
-   * Scala tambien tiene los genericos contravariantes. Esto es, que un tipo con un generico puede tener ese mismo tipo
-   * con un generico que sea padre del anterior, esto se hace indicando un - en la definicion del tipo con el generico,
-   * ejemplo (FLIPAS):
-   *
-   * Esto peude servir para hacer que un entrenador que inicialmente es de gatos tengas capcidades realmente
-   */
-  class EntrenadorDeAnimales[-A]
-  val entrenador: EntrenadorDeAnimales[Gato] = new EntrenadorDeAnimales[Animal]
+    /**
+     *
+     * Scala tambien tiene los genericos contravariantes. Esto es, que un tipo con un generico puede tener ese mismo tipo
+     * con un generico que sea padre del anterior, esto se hace indicando un - en la definicion del tipo con el generico,
+     * ejemplo (FLIPAS):
+     *
+     * Esto peude servir para hacer que un entrenador que inicialmente es de gatos tengas capcidades realmente
+     */
+    //class EntrenadorDeAnimales[-A]
+    //val entrenador: EntrenadorDeAnimales[Gato] = new EntrenadorDeAnimales[Animal]
 
-  /**
-   *
-   * Bound types, sirve para hacer que los genericos que tenga una clase solo puedan ser de un tipo o subtipos.
-   * Se hace poniendo < dentro de la parte donde se indica que es generico. Despues se ponen : y a continuacion la clase
-   * que va a hacer de corte.
-   *
-   * Si se pone > funciona al contrario y solo permite superclases de la indicada
-   * En el ejemplo, una jaula solo puede tener animales "dentro"
-   */
-  class Jaula[A <: Animal] (animal: A)
-  val jaula = new Jaula(new Dog)
+    /**
+     *
+     * Bound types, sirve para hacer que los genericos que tenga una clase solo puedan ser de un tipo o subtipos.
+     * Se hace poniendo < dentro de la parte donde se indica que es generico. Despues se ponen : y a continuacion la clase
+     * que va a hacer de corte.
+     *
+     * Si se pone > funciona al contrario y solo permite superclases de la indicada
+     * En el ejemplo, una jaula solo puede tener animales "dentro"
+     */
+    class Jaula[A <: Animal](animal: A)
+
+    val jaula = new Jaula(new Perro)
+  }
 }

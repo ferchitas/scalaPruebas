@@ -1,12 +1,14 @@
 package lectures.part2oop
 
+import scala.language.postfixOps
+
 object NotacionesDeMethodos extends App {
 
-  class Persona(val nombre: String, peliculaFavorita: String, edad: Integer = 0) {
+  class PersonaN(val nombre: String, peliculaFavorita: String, edad: Integer = 0) {
 
     def leGusta(pelicula: String): Boolean = pelicula == peliculaFavorita
 
-    def +(persona: Persona): String = s"${this.nombre} esta saliendo con ${persona.nombre}"
+    def +(persona: PersonaN): String = s"${this.nombre} esta saliendo con ${persona.nombre}"
 
     def unary_! : String = s"$nombre, como??"
 
@@ -19,21 +21,21 @@ object NotacionesDeMethodos extends App {
      * Ejercicios
      */
     //1
-    def +(persona: Persona): Persona =
-      new Persona(s"${persona.nombre}, la estrella", s"${persona.peliculaFavorita}")
+    //def +(persona: PersonaN): PersonaN =
+    //  new PersonaN(s"${persona.nombre}, la estrella", s"${persona.peliculaFavorita}")
 
     //2
-    def uniry_+(persona: Persona): Persona =
-      new Persona(s"${persona.nombre} mas mayor", s"${persona.peliculaFavorita}", persona.edad + 1)
+    //def uniry_+(person: PersonaN): PersonaN =
+    //  new PersonaN(s"${person.nombre} mas mayor", s"${person.peliculaFavorita}", person.edad + 1)
 
     //3
-    def aprendiendo(persona: Persona): String = s"${persona.nombre} esta aprendiendo Scala"
+    def aprendiendo(persona: PersonaN): String = s"${persona.nombre} esta aprendiendo Scala"
 
     //4
     def apply(nVeces: Integer): String = s"${this.nombre} ha visto $nVeces ${this.peliculaFavorita}"
   }
 
-  val jose = new Persona("jose", "origen")
+  val jose = new PersonaN("jose", "origen")
   println(jose.leGusta("la vida es bella"))
 
   /**
@@ -43,7 +45,7 @@ object NotacionesDeMethodos extends App {
    */
   println(jose leGusta "origen")
 
-  val juan = new Persona("Juan", "Fargo")
+  val juan = new PersonaN("Juan", "Fargo")
 
   /**
    *

@@ -31,7 +31,7 @@ object TiposDeDatosAbstractos extends App {
   class Cocodrilo extends Animal with Carnivoro {
 
     val tipoDeCreatura: String = "Reptil"
-    def comer: Unit = "masticando"
+    def comer: Unit = println("masticando...")
     def comer(animal: Animal): Unit = println(s"Soy un cocodrilo y me estoy comiendo un ${animal.tipoDeCreatura}")
   }
 
