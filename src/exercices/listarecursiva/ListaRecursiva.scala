@@ -12,17 +12,17 @@ abstract class ListaRecursiva[+A]{
   def insertar [C >: A] (elementoAInsertar: C): ListaRecursiva[C]
   def imprimirElementos: String
   override def toString: String = "[" + imprimirElementos + "]"
-  def mapear[C >: A](transformador: Transformador[C]): ListaRecursiva[C]
+  def mapear[B](transformador: Transformador[A, B]): ListaRecursiva[B]
   def filtrar[T](predicado: Predicado[T]): ListaRecursiva[A]
-  def mapaTransformar[C >: A](transformador: Transformador[C]): ListaRecursiva[C]
+  def mapaTransformar[B](transformador: Transformador[A, ListaRecursiva[B]]): ListaRecursiva[C]
 }
 
 trait Predicado[-T] {
   def test(elementoATestear: T): Boolean
 }
 
-trait Transformador[A] {
-  def transformar(elementoATransformar: A): A
+trait Transformador[-A, B] {
+  def transformar(elementoATransformar: A): B
 }
 
 object Vacio extends ListaRecursiva[Nothing] {
