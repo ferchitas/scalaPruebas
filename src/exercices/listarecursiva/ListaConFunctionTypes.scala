@@ -53,15 +53,9 @@ case class Elemento [+A] (elemento: A, ListaConFunctionTypes: ListaConFunctionTy
 object Test extends App {
 
   val lista1 = new Elemento[Int](1, new Elemento[Int](2, new Elemento[Int](3, Vacio)))
-  val lista2 = lista1.mapear(new Function[Int, Boolean] {
-    override def apply(elemento: Int): Boolean = elemento % 2 == 0
-  })
+  val lista2 = lista1.mapear(_ % 2 == 0)
   println(lista1.toString)
   println(lista2.toString)
-  println(lista1.filtrar(new Function[Int, Boolean] {
-    override def apply(v1: Int): Boolean = v1 % 2 == 0
-  }).toString)
-  println(lista1.mapaTransformar(new Function[Int, ListaConFunctionTypes[Int]] {
-    override def apply(v1: Int): ListaConFunctionTypes[Int] = new Elemento(v1 , new Elemento(v1 + 1, Vacio))
-  }).toString)
+  println(lista1.filtrar(_ % 2 == 0).toString)
+  println(lista1.mapaTransformar(v1 => new Elemento(v1 , new Elemento(v1 + 1, Vacio))).toString)
 }
